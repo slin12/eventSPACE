@@ -10,48 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113164803) do
-
-  create_table "events", force: :cascade do |t|
-    t.datetime "date"
-    t.string "title"
-    t.integer "location_id"
-    t.boolean "public"
-  end
-
-  create_table "friendships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "friend_id"
-  end
-
-  create_table "locations", force: :cascade do |t|
-    t.string "name"
-    t.string "address1"
-    t.string "address2"
-    t.string "city_state"
-    t.integer "zip"
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "event_id"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "rsvps", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "user_id"
-    t.string "attending"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.text "bio"
-    t.date "birthday"
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end
