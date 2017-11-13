@@ -1,2 +1,24 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<h1>Gimme The Deets:</h1>
+
+<%= form_for @event do |f| %>
+  <h4>Location:</h4>
+  <h6><%= @location.name %></h6>
+  <p>ADDRESS HERE</p>
+  <p><%= @location.phone %></p>
+  <%= f.hidden_field :location_id, value: @location.id %>
+  <br><br>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+  <br><br>
+  <%= f.label :time %>
+  <%= f.time_field :time %>
+  <br><br>
+  <input type="checkbox" id="test5" name="event[private]"/>
+  <label for="test5">Private</label>
+  <br><br>
+  <%= f.submit %>
+
+<% end %>

@@ -6,6 +6,8 @@ class EventsController < ApplicationController
   end
 
   def new
+    @location = Location.first
+    @event = Event.new(location: @location)
   end
 
   def create
@@ -18,5 +20,10 @@ class EventsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def event_params
+    params.require(:event).permit(:location_id, :title, :date, :time, :private)
   end
 end
