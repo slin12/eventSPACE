@@ -1,0 +1,13 @@
+<h3>Welcome to EventSPACE, login to get started!</h3>
+<p>Not a member? <a href="/users/new">Sign up here.</a></p>
+
+<%= form_tag "/login" do %>
+
+  <%= label_tag "user[email]", "Email"  %><br>
+  <%= text_field_tag "user[email]" %><br>
+
+  <%= label_tag "user[password]", "Password" %><br>
+  <%= password_field_tag "user[password]" %><br></br>
+
+<%= button_tag "Login" %>
+<% end %>
