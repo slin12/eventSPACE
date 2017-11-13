@@ -11,6 +11,8 @@
   <body>
     <%=  link_to "Events", events_path %>
     <%=  link_to "New Event", new_location_path %>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

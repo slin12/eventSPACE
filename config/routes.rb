@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :events
-  resources :locations, only: [:create]
+  resources :locations, only: [:new, :create]
   resources :users, except: [:index]
   resources :rsvps
 
