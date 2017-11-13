@@ -1,2 +1,12 @@
-<h1>Locations#new</h1>
-<p>Find me in app/views/locations/new.html.erb</p>
+<h1>Let's Find A Location!</h1>
+
+<%= form_tag search_path do %>
+  <%= label_tag 'type', "What Are You Looking For?" %>
+  <%= text_field_tag 'type' %><br><br>
+
+  <%= label_tag 'location', "Where Are You Looking?" %>
+  <%= text_field_tag 'location' %><br><br>
+
+  <%= submit_tag "Search"%>
+
+<% end %>

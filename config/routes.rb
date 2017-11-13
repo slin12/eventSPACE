@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :events
-  resources :locations
+  resources :locations, only: [:create]
   resources :users, except: [:index]
   resources :rsvps
 
@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   # User Authentication routes
   post "/login", to: "sessions#create"
   post "/sessions/:id", to: "sessions#destroy"
+
+  post '/search', to: "locations#search", as: 'search'
+  get '/search', to: 'events#index'
 end
