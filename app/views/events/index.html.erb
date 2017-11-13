@@ -1,2 +1,19 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<h1>Events List</h1>
+
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:event, "Search for:") %>
+  <%= text_field_tag(:zip) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+
+
+<%@events.each do |event|%>
+<div class="event-data">
+  <h4><%=event.title%></h4>
+  Where: <%= event.real_location  %><br>
+  When: <%= event.real_time  %><br>
+  Admittance: <%= event.is_private? %>
+<% end %>
+
+</div>
