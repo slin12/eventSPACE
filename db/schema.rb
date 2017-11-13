@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20171113164803) do
     t.datetime "date"
     t.string "title"
     t.integer "location_id"
-    t.boolean "public"
+    t.boolean "admittance"
   end
 
   create_table "friendships", force: :cascade do |t|
