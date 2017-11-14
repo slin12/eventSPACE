@@ -3,6 +3,9 @@ class Event < ApplicationRecord
   belongs_to :location
   has_many :rsvps
   has_many :users, through: :rsvps
+  belongs_to :host, class_name: 'User'
+
+  validates :title, :date, :time, presence: true
 
   def real_time
     date = self.date
@@ -23,4 +26,11 @@ class Event < ApplicationRecord
       "Private"
     end
   end
+
+  def private=(arg)
+    if arg == "on"
+      self.admittance = false
+    end
+  end
+
 end

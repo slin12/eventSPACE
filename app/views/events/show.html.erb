@@ -1,2 +1,9 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<h1><%= @event.title %></h1>
+<p>A <%= @event.is_private? %> Event Hosted by HOST</p>
+<p><%= @event.real_time %></p>
+
+<h4>Location</h4>
+<p><%= @event.location.name %></p>
+<p><%= @event.real_location %></p>
+
+<h4>People Going</h4>

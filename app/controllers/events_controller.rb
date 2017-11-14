@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :authorize_user, only: [:]
+
   def index
     if params[:zip]
       @events = Event.all.select do |event|
@@ -13,12 +15,16 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  def new
-    @location = Location.first
-    @event = Event.new(location: @location)
-  end
-
   def create
+    @location = Location.find(event_params["location_id"])
+    @event = Event.new(event_params)
+    @event.host = current_user
+    if @event.save
+      flash[:notice] = "You've successfully created an event!"
+      redirect_to event_path(@event)
+    else
+      render 'new'
+    end
   end
 
   def edit

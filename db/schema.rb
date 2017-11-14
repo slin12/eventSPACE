@@ -16,7 +16,8 @@ ActiveRecord::Schema.define(version: 20171113205915) do
     t.datetime "date"
     t.string "title"
     t.integer "location_id"
-    t.boolean "admittance"
+    t.boolean "admittance", default: true
+    t.integer "host_id"
     t.time "time"
   end
 
