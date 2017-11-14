@@ -7,6 +7,12 @@
     <p><%= @event.real_time %></p>
 
     <h5>People Going</h5>
+    <ul>
+      <% @event.users.each do |user| %>
+        <%= link_to user.name, user_path(user) %>
+      <% end %>
+      <li></li>
+    </ul>
 
   </div>
   <div class="col s5">

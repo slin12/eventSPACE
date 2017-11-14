@@ -49,5 +49,13 @@ h3 {
 }
 
 .container {
-  padding-bottom: 30px; 
+  padding-bottom: 30px;
+}
+
+.event-data {
+  padding-top: 20px;
+}
+
+.event-data a {
+  color: #26c6da;
 }

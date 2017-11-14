@@ -21,6 +21,7 @@ class EventsController < ApplicationController
     @event.host = current_user
     if @event.save
       flash[:notice] = "You've successfully created an event!"
+      Rsvp.create(event_id: @event.id, user_id: current_user.id, attending: "yes")
       redirect_to event_path(@event)
     else
       render 'new'
