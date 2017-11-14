@@ -34,6 +34,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def dashbaord
+  end
+
   def edit
   end
 
