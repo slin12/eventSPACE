@@ -19,13 +19,15 @@ class LocationsController < ApplicationController
   end
 
   def create
-    location = Location.cache.find {|x| x.name == params["location"]["name"]}
+    name = Location.name_from_submit(params["commit"])
+    location = Location.cache.find {|x| x.name == name}
     if Location.find_by(name: location.name, zip: location.zip)
-      @location = Location.find_by(name: rest.name, city: rest.city)
+      @location = Location.find_by(name: location.name, zip: location.zip)
     else
-      @location = Location.cache.find {|x| x.name == params["location"]["name"]}
+      @location = Location.cache.find {|x| x.name == name}
       @location.save
     end
+    Location.cache.clear
     @event = Event.new
     render 'events/new'
   end
@@ -38,4 +40,5 @@ class LocationsController < ApplicationController
 
   def destroy
   end
+
 end

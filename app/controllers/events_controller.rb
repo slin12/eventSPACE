@@ -14,8 +14,6 @@ class EventsController < ApplicationController
   end
 
   def new
-    @location = Location.first
-    @event = Event.new(location: @location)
   end
 
   def create

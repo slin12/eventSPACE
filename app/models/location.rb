@@ -5,4 +5,8 @@ class Location < ApplicationRecord
   def self.cache
     @@cache
   end
+
+  def self.name_from_submit(select)
+    select.gsub("Select ", "")
+  end
 end
