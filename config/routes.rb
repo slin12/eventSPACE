@@ -18,4 +18,6 @@ Rails.application.routes.draw do
 
   post '/search', to: "locations#search", as: 'search'
   get '/search', to: 'events#index'
+
+  post '/rspv', to: "rsvps#update", as: 'rsvps_edit'
 end

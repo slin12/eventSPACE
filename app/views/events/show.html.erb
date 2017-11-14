@@ -1,20 +1,30 @@
 
 <h3 class="center"><%= @event.title %></h3>
 <h6 class="center">A <%= @event.is_private? %> Event Hosted by <%= current_user.name   %></h6>
+<h6 class="center"><%= @event.real_time %></h6>
+
 <div class="row">
   <div class="col s7">
+
     <% if @event.invited.find {|x| x.user_id == session[:user_id]} %>
     <div class="rsvp-box">
       <h5>You're Invited!</h5>
-      <%= form_tag rsvps_path do %>
+      <%= form_tag rsvps_edit_path do %>
         <%= hidden_field_tag 'event_id', @event.id %>
         <%= submit_tag "Yes", class: "btn waves-effect waves-light cyan lighten-1" %>
         <%= submit_tag "No", class: "btn waves-effect waves-light cyan lighten-1" %>
       <% end %>
     </div>
+    <% elsif @event.admittance == true && !current_user.events.include?(@event) %>
+      <h5>Join This Event!</h5>
+      <div class="rsvp-box">
+        <%= form_tag rsvps_path do %>
+        <%= hidden_field_tag 'event_id', @event.id %>
+        <%= submit_tag "Yes", class: "btn waves-effect waves-light cyan lighten-1" %>
+        <% end %>
+      </div>
     <% end %>
 
-    <p><%= @event.real_time %></p>
 
     <h5>People Going</h5>
     <ul>
@@ -45,8 +55,8 @@
 
   </div>
   <div class="col s5">
-    <h5>Location</h5>
-    <p><%= @event.location.name %></p>
+    <h4>Location</h4>
+    <h5><%= @event.location.name %></h5>
     <p><%= @event.real_location %></p>
 
       <iframe width="500" height="500" frameborder="0" style="border:0"
