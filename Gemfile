@@ -31,6 +31,9 @@ gem 'http'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'carrierwave'
+gem 'image_magick'
+gem 'mini_magick'
 
 
 # Use Capistrano for deployment

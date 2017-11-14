@@ -17,8 +17,10 @@
         <% if logged_in?%>
           <li><%=  link_to "Events", events_path %><li>
           <li><%=  link_to "New Event", new_location_path %></li>
+          <li id="logout" class="right"><%= link_to "Logout", "/sessions/:id", method: :post%></li>
           <li id="dashboard"><%= link_to "Dashboard", user_dashboard_path%></li>
-          <li><%= link_to "Logout", "/sessions/:id", method: :post%></li>
+          <% @user = User.find(session[:user_id]) %>
+          <li id="profile" class="right"><%= image_tag @user.profile.thumb.url, size: 50%></li>
         <% else %>
           <li><%= link_to "Sign In", root_path%></li>
         <% end %>

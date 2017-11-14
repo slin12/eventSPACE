@@ -1,11 +1,20 @@
 // Navbar styling
 
-#navbar > li:last-child
+#navbar > #dashboard
 {
   float: right;
 }
 
-#navbar > #dashboard
+
+#navbar > #logout
 {
   float: right;
+}
+
+
+#navbar > #profile img
+{
+  margin-top: 6.5px;
+  float: right;
+  border-radius: 100%;
 }

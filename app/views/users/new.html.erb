@@ -1,6 +1,8 @@
 <h3 class="center">Sign up for EventSPACE!</h3>
 
 <%= form_for @user do |f|  %>
+  <%= f.label :profile, "Profile Photo" %>
+  <%= f.file_field :profile %><br>
   <%= f.label :email, "Email" %><br>
   <%= f.text_field :email %><br>
   <%= f.label :name, "Name" %><br>
