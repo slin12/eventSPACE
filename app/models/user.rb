@@ -14,4 +14,11 @@ class User < ApplicationRecord
     self.rsvps.select {|x| x.attending == "maybe"}
   end
 
+  def accepted_friends
+    self.friends.select do |friend|
+      friend.friends.include?(self)
+    end
+  end
+
+
 end
