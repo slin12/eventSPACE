@@ -35,8 +35,8 @@ class UsersController < ApplicationController
     end
   end
 
-  # Mispelling
-  def dashbaord
+  def dashboard
+    @friends = current_user.accepted_friends
   end
 
   def edit

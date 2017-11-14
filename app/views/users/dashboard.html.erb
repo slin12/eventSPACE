@@ -11,7 +11,12 @@
     <p>one column can hold some stuff, maybe some recent friends</p>
   </div>
   <div class="column">
-    <p>another column can keep some other things in it, maybe events upcoming?</p>
+    <h3>Friends List</h3>
+    <ul>
+      <% @friends.each do |friend| %>
+        <li><%= link_to friend.name, user_path(friend) %>
+      <% end %>
+    </ul>
   </div>
 </div>
 <div>

@@ -10,4 +10,11 @@ class User < ApplicationRecord
     !! Friendship.all.find_by(user_id: self.id, friend_id: current_user.id)
   end
 
+  def accepted_friends
+    self.friends.select do |friend|
+      friend.friends.include?(self)
+    end
+  end
+
+
 end
