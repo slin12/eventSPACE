@@ -1,0 +1,17 @@
+<div class="search_bar">
+  <p>Search</p>
+  <p><%= form_tag users_path, method: 'get' do %></p>
+    <%= text_field_tag :search, params[:search] %><br>
+    <%= submit_tag "Search" %><br>
+  <% end %>
+</div>
+
+<% if @users %>
+  <% @users.each do | user | %>
+    <div>
+      <h3><%= link_to(user.name, user_path(user)) %></h3>
+    </div>
+  <% end %>
+<% else %>
+  <p>Sorry! We couldn't find what you were looking for.</p>
+<% end %>

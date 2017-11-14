@@ -1,7 +1,14 @@
 <div class="dashboard-welcome">
 
-  <h3>This is the dashboard</h3>
-  <span>Hello <%= current_user.name %>, Welcome your dashboard</span>
+  <h3>Hello <%= current_user.name %></h3>
+
+  <div class="search_bar">
+    <p>Search People </p>
+    <p><%= form_tag users_path, method: 'get' do %></p>
+      <%= text_field_tag :search, params[:search] %><br>
+      <%= submit_tag "Search" %><br>
+    <% end %>
+  </div>
 
 
 <div class="container">

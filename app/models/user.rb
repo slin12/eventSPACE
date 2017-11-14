@@ -21,5 +21,13 @@ class User < ApplicationRecord
     end
   end
 
+  def self.search(search)
+    if search
+      User.where(["name LIKE ?", "%#{search}%"])
+    else
+      nil
+    end
+  end
+
 
 end
