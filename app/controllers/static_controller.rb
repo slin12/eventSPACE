@@ -1,11 +1,11 @@
 class StaticController < ApplicationController
 
-  def index
-    render :layout => false
-  end
-
   def home
-    render :layout => false
+    if logged_in?
+      redirect_to user_dashboard_path
+    else
+      render :layout => false
+    end
   end
 
 

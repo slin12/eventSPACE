@@ -19,6 +19,17 @@
   <input type="checkbox" id="test5" name="event[private]"/>
   <label for="test5">Private</label>
   <br><br>
+
+  Invite Your Friends:
+  <br>
+  <div class="friends-box">
+    <% current_user.friends.each do |friend| %>
+    <input type="checkbox" id="<%= friend.id %>" name="event[user_ids][]" value="<%= friend.id %>"/>
+    <label for="<%= friend.id %>"><%= friend.name    %></label>
+      <br>
+    <% end %>
+  </div>
+
   <%= f.submit class: "btn waves-effect waves-light cyan lighten-1"%>
 
 <% end %>

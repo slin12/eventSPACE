@@ -22,6 +22,11 @@ class EventsController < ApplicationController
     if @event.save
       flash[:notice] = "You've successfully created an event!"
       Rsvp.create(event_id: @event.id, user_id: current_user.id, attending: "yes")
+
+      params["event"]["user_ids"].each do |user_id|
+        Rsvp.create(event_id: @event.id, user_id: user_id, attending: "maybe")
+      end
+
       redirect_to event_path(@event)
     else
       render 'new'

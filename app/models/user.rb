@@ -10,4 +10,8 @@ class User < ApplicationRecord
     !! Friendship.all.find_by(user_id: self.id, friend_id: current_user.id)
   end
 
+  def invited_events
+    self.rsvps.select {|x| x.attending == "maybe"}
+  end
+
 end

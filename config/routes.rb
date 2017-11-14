@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :events, except: [:new]
   resources :locations, only: [:new, :create]
   resources :users, except: [:index]
-  resources :rsvps
+  resources :rsvps, only: [:create]
   resources :friendships, only: [:create]
 
   # Landing Page

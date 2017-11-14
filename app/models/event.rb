@@ -38,4 +38,16 @@ class Event < ApplicationRecord
     end
   end
 
+  def going
+    Rsvp.where("event_id = ?", self.id).select {|x| x.attending == "yes"}
+  end
+
+  def invited
+    Rsvp.where("event_id = ?", self.id).select {|x| x.attending == "maybe"}
+  end
+
+  def not_going
+    Rsvp.where("event_id = ?", self.id).select {|x| x.attending == "no"}
+  end
+
 end

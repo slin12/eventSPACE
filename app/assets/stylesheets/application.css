@@ -59,3 +59,11 @@ h3 {
 .event-data a {
   color: #E22F5D;
 }
+
+.invited-event {
+  line-height: 5px;
+}
+
+.rsvp-box {
+  margin-bottom: 40px; 
+}

@@ -5,7 +5,18 @@
 
 
 <div class="container">
-  <h4>Find all of your new alerts in this space</h4>
+  <h3>Invited Events:</h3>
+  <% if current_user.invited_events.empty? %>
+    <p>None! Why don't you make one?</p>
+  <% else %>
+      <% current_user.invited_events.each do |rsvp| %>
+      <div class="invited-event">
+      <h5><%= link_to rsvp.event.title, event_path(rsvp.event) %></h5>
+        <small>Invited by <%= rsvp.event.host.name %></small>
+        <p><%= rsvp.event.location.name %> // <%= rsvp.event.real_location %></p>
+      </div>
+      <% end %>
+  <% end %>
 </div>
   <div class="column">
     <p>one column can hold some stuff, maybe some recent friends</p>

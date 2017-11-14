@@ -1,22 +1,20 @@
 class RsvpsController < ApplicationController
-  def index
-  end
-
-  def show
-  end
-
-  def new
-  end
-
   def create
+    event = Event.find(rsvp_params["event_id"])
+    rsvp = event.rsvps.find {|x| x.user_id == session[:user_id]}
+    if rsvp_params["commit"] == "Yes"
+      rsvp.attending = "yes"
+      rsvp.save
+      redirect_to request.referrer
+    else
+      rsvp.attending = "no"
+      rsvp.save
+      redirect_to request.referrer
+    end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
+  private
+  def rsvp_params
+    params.permit(:event_id, :commit)
   end
 end
