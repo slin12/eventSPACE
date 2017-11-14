@@ -22,10 +22,10 @@ body {
 #navbar a {
   color: #26c6da;
 }
-/*
+
 #navbar a:hover {
-  color: #ec407a;
-}*/
+  color: #E22F5D;
+}
 
 
 #navbar img {
@@ -57,5 +57,5 @@ h3 {
 }
 
 .event-data a {
-  color: #26c6da;
+  color: #E22F5D;
 }
