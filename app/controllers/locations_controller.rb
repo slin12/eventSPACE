@@ -1,9 +1,6 @@
 class LocationsController < ApplicationController
   before_action :authorize_user, only: [:new]
 
-  def index
-  end
-
   def show
   end
 

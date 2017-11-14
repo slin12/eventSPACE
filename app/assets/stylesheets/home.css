@@ -55,8 +55,14 @@ html, body {
   color: #9e9e9e;
 }
 
+.login:hover h3 {
+  color: black;
+}
+
 .login h3 {
   text-align: center;
+  color: white;
+  font-style: italic;
 }
 
 .login a {

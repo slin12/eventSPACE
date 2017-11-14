@@ -1,9 +1,18 @@
-<h1><%= @event.title %></h1>
-<p>A <%= @event.is_private? %> Event Hosted by <%= current_user.name %></p>
-<p><%= @event.real_time %></p>
 
-<h4>Location</h4>
-<p><%= @event.location.name %></p>
-<p><%= @event.real_location %></p>
+<h3 class="center"><%= @event.title %></h3>
+<div class="row">
+  <div class="col s7">
 
-<h4>People Going</h4>
+    <p>A <%= @event.is_private? %> Event Hosted by <%= current_user.name   %></p>
+    <p><%= @event.real_time %></p>
+
+    <h5>People Going</h5>
+
+  </div>
+  <div class="col s5">
+    <h5>Location</h5>
+    <p><%= @event.location.name %></p>
+    <p><%= @event.real_location %></p>
+
+  </div>
+</div>

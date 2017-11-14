@@ -1,11 +1,15 @@
-<h1>Select A Location:</h1>
+<h3>Select A Location:</h3>
 
 <%= form_tag locations_path %>
-<% @array.each do |location| %>
-  <div>
-    <h4><%= location.name %></h4>
-    <p><%= location.real_location %></p>
-    <p><%= location.phone %></p>
-    <%= submit_tag "Select #{location.name}"%>
-  </div>
+  <% @array.in_groups_of(2, false).each do |array| %>
+  <div class="row">
+    <% array.each do |location| %>
+      <div class="col s6 result">
+        <h4><%= location.name %></h4>
+        <p><%= location.real_location %></p>
+        <p><%= location.phone %></p>
+        <%= submit_tag "Select #{location.name}", class: "btn waves-effect waves-light cyan lighten-1"%>
+      </div>
+      <% end %>
+    </div>
 <% end %>
