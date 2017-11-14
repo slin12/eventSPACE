@@ -1,7 +1,21 @@
 
+<<<<<<< HEAD
 <h3 class="center"><%= @event.title %></h3>
 <div class="row">
   <div class="col s7">
+=======
+
+<div class="column">
+<h4>Location</h4>
+<p><%= @event.location.name %></p>
+<p><%= @event.real_location %></p>
+</div>
+<div class="column">
+  <iframe width="500" height="500" frameborder="0" style="border:0"
+ src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBKvYd7fGmH5mDIU0KDAX3GKn2cdleHotI&q=<%="#{@event.url_helper}"%>">
+</iframe>
+</div>
+>>>>>>> map_and_partials
 
     <p>A <%= @event.is_private? %> Event Hosted by <%= current_user.name   %></p>
     <p><%= @event.real_time %></p>

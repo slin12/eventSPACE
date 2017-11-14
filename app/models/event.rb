@@ -19,6 +19,11 @@ class Event < ApplicationRecord
     "#{loc.city_state} #{loc.zip}"
   end
 
+  def url_helper
+    address = self.location.real_location
+    self.location.name.split(" ").join("+") + address.split(/[ ,]+/ ).join("+")
+  end
+
   def is_private?
     if self.admittance == true
       "Public"
