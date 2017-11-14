@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authorize_user
+  before_action :authorize_user, only: [:]
 
   def index
     if params[:zip]
@@ -13,9 +13,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-  end
-
-  def new
   end
 
   def create
