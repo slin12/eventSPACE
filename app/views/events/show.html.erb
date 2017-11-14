@@ -1,5 +1,6 @@
 
 <h3 class="center"><%= @event.title %></h3>
+<h6 class="center">A <%= @event.is_private? %> Event Hosted by <%= current_user.name   %></h6>
 <div class="row">
   <div class="col s7">
     <% if @event.invited.find {|x| x.user_id == session[:user_id]} %>
@@ -7,13 +8,12 @@
       <h5>You're Invited!</h5>
       <%= form_tag rsvps_path do %>
         <%= hidden_field_tag 'event_id', @event.id %>
-        <%= submit_tag "Yes" %>
-        <%= submit_tag "No" %>
+        <%= submit_tag "Yes", class: "btn waves-effect waves-light cyan lighten-1" %>
+        <%= submit_tag "No", class: "btn waves-effect waves-light cyan lighten-1" %>
       <% end %>
     </div>
     <% end %>
 
-    <p>A <%= @event.is_private? %> Event Hosted by <%= current_user.name   %></p>
     <p><%= @event.real_time %></p>
 
     <h5>People Going</h5>

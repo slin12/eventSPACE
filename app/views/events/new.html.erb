@@ -20,6 +20,7 @@
   <label for="test5">Private</label>
   <br><br>
 
+  <% if !current_user.friends.empty? %>
   Invite Your Friends:
   <br>
   <div class="friends-box">
@@ -29,6 +30,8 @@
       <br>
     <% end %>
   </div>
+  <br><br>
+  <% end %>
 
   <%= f.submit class: "btn waves-effect waves-light cyan lighten-1"%>
 
