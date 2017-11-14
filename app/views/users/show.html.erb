@@ -5,8 +5,10 @@
   <%= image_tag @user.profile.url, size:"250"%>
   <% end %>
   <p><%= @user.bio %></p>
+  <% if @user.id != session[:user_id] %>
   <p><%= form_for @friendship, url: friendships_path do |f| %>
     <%= f.hidden_field :user_id, value: @user.id %>
     <%= f.submit @friend_status %>
+    <% end %>
   <% end %></p>
 </div>
