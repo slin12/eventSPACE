@@ -1,4 +1,4 @@
-<h1>Let's Find A Location!</h1>
+<h3>Let's Find A Location!</h3>
 
 <%= form_tag search_path do %>
   <%= label_tag 'type', "What Are You Looking For?" %>
@@ -7,6 +7,6 @@
   <%= label_tag 'location', "Where Are You Looking?" %>
   <%= text_field_tag 'location' %><br><br>
 
-  <%= submit_tag "Search"%>
+  <%= submit_tag "Search", class: "btn waves-effect waves-light cyan lighten-1"%>
 
 <% end %>

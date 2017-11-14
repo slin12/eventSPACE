@@ -1,5 +1,6 @@
 class Location < ApplicationRecord
   has_many :events
+
   @@cache = []
 
   def self.cache
@@ -11,7 +12,7 @@ class Location < ApplicationRecord
   end
 
   def real_location
-    "#{self.address1} " +
+    "#{self.address1}" +
     "#{self.address2} " +
     "#{self.city_state} #{self.zip}"
   end

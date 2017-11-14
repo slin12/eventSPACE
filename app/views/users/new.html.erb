@@ -1,4 +1,4 @@
-<h3>Sign up for EventSPACE!</h3>
+<h3 class="center">Sign up for EventSPACE!</h3>
 
 <%= form_for @user do |f|  %>
   <%= f.label :email, "Email" %><br>
@@ -14,5 +14,5 @@
   <%= f.label :bio, "Tell us about yourself."%><br>
   <%= f.text_area :bio %><br>
   <br>
-  <%= f.submit "Sign Up!" %>
+  <%= f.submit "Sign Up!", class: "btn waves-effect waves-light cyan lighten-1"%>
 <% end %>

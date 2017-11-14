@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
+  before_action :authorize_user, only: [:dashboard]
   helper_method :friend_status
 
+
+  # def require_login
+  #   unless logged_in?
+  #     flash[:error] = "You must be logged in to access this section"
+  #     redirect_to root_path
+  #   end
+  # end
 
   # def index
   # end

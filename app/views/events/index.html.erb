@@ -1,19 +1,20 @@
-<h1>Events List</h1>
+<h3>Events List</h3>
 
 <%= form_tag("/search", method: "get") do %>
   <%= label_tag(:event, "Search for:") %>
   <%= text_field_tag(:zip) %>
-  <%= submit_tag("Search") %>
+  <%= submit_tag("Search", class: "btn waves-effect waves-light cyan lighten-1") %>
 <% end %>
 
 
 
 <%@events.each do |event|%>
 <div class="event-data">
-  <h4><%=event.title%></h4>
-  Where: <%= event.real_location  %><br>
-  When: <%= event.real_time  %><br>
-  Admittance: <%= event.is_private? %>
+  <h5><%=link_to event.title, event_path(event)%></h5>
+  <i>Hosted by</i>: <%= event.host.name %><br>
+  <i>Where:</i> <%= event.location.name %> // <%= event.real_location  %><br>
+  <i>When:</i> <%= event.real_time  %><br>
+  <i>Admittance:</i> <%= event.is_private? %>
 <% end %>
 
 </div>

@@ -6,14 +6,15 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Barlow:300,300i,400,400i" rel="stylesheet">
   </head>
 
   <body>
 
-    <nav>
+    <nav class="white">
       <ul id="navbar">
+        <%= image_tag 'logo', size: "150x45" %>
         <% if logged_in?%>
-          <li><%=  link_to "Home", root_path %><li>
           <li><%=  link_to "Events", events_path %><li>
           <li><%=  link_to "New Event", new_location_path %></li>
           <li id="dashboard"><%= link_to "Dashboard", user_dashboard_path%></li>
@@ -23,14 +24,16 @@
         <% end %>
       </ul>
     </nav>
-    <div>
+    <div class="flash">
       <% flash.each do |k, v| %>
         <div><%= v %></div>
       <% end %>
     </div>
 
-    <div class="container">
-      <%= yield %>
-    </div>
+
+      <div class="container">
+        <%= yield %>
+      </div>
+    
   </body>
 </html>
