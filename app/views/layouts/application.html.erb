@@ -24,16 +24,18 @@
         <% end %>
       </ul>
     </nav>
-    <div class="flash">
-      <% flash.each do |k, v| %>
-        <div><%= v %></div>
-      <% end %>
-    </div>
+    <% if !flash.empty? %>
+      <div class="flash">
+        <% flash.each do |k, v| %>
+          <div><%= v %></div>
+        <% end %>
+      </div>
+    <% end %>
 
 
       <div class="container">
         <%= yield %>
       </div>
-    
+
   </body>
 </html>

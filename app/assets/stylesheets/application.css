@@ -41,6 +41,10 @@ h3 {
 
 .flash {
   text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #E22F5D;
+  color: white;
 }
 
 .result {
