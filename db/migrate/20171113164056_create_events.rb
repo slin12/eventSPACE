@@ -5,6 +5,7 @@ class CreateEvents < ActiveRecord::Migration[5.1]
       t.string :title
       t.integer :location_id
       t.boolean :admittance, default: true
+      t.integer :host_id
     end
   end
 end
