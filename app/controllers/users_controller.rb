@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  helper_method :friend_status
 
 
   # def index
@@ -6,16 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
-    if @user.friend?(User.find_by_id(session[:user_id])) && User.find_by_id(session[:user_id]).friend?(@user)
-      @friend_status = "Friends"
-    elsif @user.friend?(User.find_by_id(session[:user_id]))
-      @friend_status = "Request Sent"
-    elsif User.find_by_id(session[:user_id]).friend?(@user)
-      @friend_status = "Accept Request"
-    else
-      @friend_status = "Add Friend"
-    end
+    @friendship = Friendship.new
+    @friend_status = friend_status(@user)
   end
 
   def new
@@ -26,7 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(users_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = "You're logged in! Welcome!"
+      flash[:notice] = "You're logged in!"
       redirect_to user_dashboard_path
     else
       flash[:notice] = "Your sign up information is invalid, please try again."
@@ -34,6 +27,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # Mispelling
   def dashbaord
   end
 
@@ -50,6 +44,20 @@ class UsersController < ApplicationController
 
   def users_params
     params.require(:user).permit(:email, :name, :password, :password_confirmation, :birthday, :bio)
+  end
+
+  def friend_status(user)
+    if user == current_user
+      @friend_status = ""
+    elsif user.friend?(current_user) && current_user.friend?(user)
+      @friend_status = "Friends"
+    elsif current_user.friend?(user)
+      @friend_status = "Request Sent"
+    elsif user.friend?(current_user)
+      @friend_status = "Accept Request"
+    else
+      @friend_status = "Add Friend"
+    end
   end
 
 end

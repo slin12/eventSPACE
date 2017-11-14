@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :locations, only: [:new, :create]
   resources :users, except: [:index]
   resources :rsvps
+  resources :friendships, only: [:create]
 
   # Landing Page
   get '/', to: "static#home", as: 'root'
