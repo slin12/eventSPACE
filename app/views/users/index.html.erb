@@ -9,7 +9,7 @@
 <% if @users %>
   <% @users.each do | user | %>
     <div>
-      <h3><%= image_tag user.profile.thumb.url, size: 50%><%= link_to(user.name, user_path(user)) %></h3>
+      <h3><%= image_tag user.profile.thumb.url, size: 50 if user.profile?%><%= link_to(user.name, user_path(user)) %></h3>
     </div>
   <% end %>
 <% else %>
