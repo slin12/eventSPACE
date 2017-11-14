@@ -11,10 +11,10 @@
 <%@events.each do |event|%>
 <div class="event-data">
   <h5><%=link_to event.title, event_path(event)%></h5>
-  Hosted by: <%= event.host.name %><br> 
-  Where: <%= event.real_location  %><br>
-  When: <%= event.real_time  %><br>
-  Admittance: <%= event.is_private? %>
+  <i>Hosted by</i>: <%= event.host.name %><br>
+  <i>Where:</i> <%= event.location.name %> // <%= event.real_location  %><br>
+  <i>When:</i> <%= event.real_time  %><br>
+  <i>Admittance:</i> <%= event.is_private? %>
 <% end %>
 
 </div>
