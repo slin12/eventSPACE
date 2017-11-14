@@ -1,13 +1,17 @@
-<h3>Welcome to EventSPACE, login to get started!</h3>
-<p>Not a member? <a href="/users/new">Sign up here.</a></p>
+<div class="container"><h3>Welcome to EventSPACE!</h3></div>
 
-<%= form_tag "/login" do %>
-
-  <%= label_tag "user[email]", "Email"  %><br>
-  <%= text_field_tag "user[email]" %><br>
-
-  <%= label_tag "user[password]", "Password" %><br>
-  <%= password_field_tag "user[password]" %><br></br>
-
-<%= button_tag "Login" %>
-<% end %>
+<% if logged_in? %>
+  <div class="container">
+    <div class="column">
+      <p>this can be some random stuff, I didn't fully commit to what the layout of our home page should be</p>
+    </div>
+    <div class="column">
+      <p>maybe we can have a description of what the app does if not logged in. these are both in a div.container so they look center, but that will change prob</p>
+    </div>
+  </div>
+  <% else %>
+    <%= render "sign_in" %>
+    <div class="column intro1">
+      <p>Welcome to eventSPACE, your social media platform for connecting attendees of corporate and private events.</p>
+    </div>
+  <% end %>
