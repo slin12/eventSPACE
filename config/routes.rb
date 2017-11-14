@@ -11,13 +11,9 @@ Rails.application.routes.draw do
   get '/user/dashboard', to: 'users#dashboard'
 
   # User Authentication routes
-<<<<<<< HEAD
-  post "/login", to: "sessions#create"
-  post "/sessions/:id", to: "sessions#destroy", as: "logout"
-=======
   post '/login', to: 'sessions#create'
   post '/sessions/:id', to: 'sessions#destroy'
->>>>>>> ux_dashboard
+
 
   post '/search', to: "locations#search", as: 'search'
   get '/search', to: 'events#index'

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authorize_user, only: [:]
+  before_action :authorize_user, only: [:create]
 
   def index
     if params[:zip]

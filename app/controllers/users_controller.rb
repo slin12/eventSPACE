@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "You're logged in! Welcome!"
-      redirect_to user_path(@user)
+      redirect_to user_dashboard_path
     else
       flash[:notice] = "Your sign up information is invalid, please try again."
       render new_user_path
