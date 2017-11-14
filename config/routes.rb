@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # User Authentication routes
   post "/login", to: "sessions#create"
-  post "/sessions/:id", to: "sessions#destroy"
+  post "/sessions/:id", to: "sessions#destroy", as: "logout"
 
   post '/search', to: "locations#search", as: 'search'
   get '/search', to: 'events#index'

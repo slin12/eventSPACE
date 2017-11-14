@@ -11,6 +11,8 @@
   <body>
     <%=  link_to "Events", events_path %>
     <%=  link_to "New Event", new_location_path %>
+    <%=  link_to "Log Out", "/sessions/:id", method: :post %>
+
     <div class="container">
       <%= yield %>
     </div>

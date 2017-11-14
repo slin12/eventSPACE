@@ -1,10 +1,21 @@
 class UsersController < ApplicationController
 
 
-  def index
-  end
+  # def index
+  # end
 
   def show
+    @user = User.find(params[:id])
+
+    if @user.friend?(User.find_by_id(session[:user_id])) && User.find_by_id(session[:user_id]).friend?(@user)
+      @friend_status = "Friends"
+    elsif @user.friend?(User.find_by_id(session[:user_id]))
+      @friend_status = "Request Sent"
+    elsif User.find_by_id(session[:user_id]).friend?(@user)
+      @friend_status = "Accept Request"
+    else
+      @friend_status = "Add Friend"
+    end
   end
 
   def new
@@ -35,7 +46,7 @@ class UsersController < ApplicationController
   private
 
   def users_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :birthday, :bio)
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :birthday, :bio)
   end
 
 end
