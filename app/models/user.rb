@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :rsvps
   has_many :events, through: :rsvps
   has_secure_password
+  mount_uploader :profile, ProfileUploader
 
   def friend?(current_user)
     !! Friendship.all.find_by(user_id: self.id, friend_id: current_user.id)
