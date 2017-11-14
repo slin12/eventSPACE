@@ -9,12 +9,7 @@
   </head>
 
   <body>
-<<<<<<< HEAD
-    <%=  link_to "Events", events_path %>
-    <%=  link_to "New Event", new_location_path %>
-    <%=  link_to "Log Out", "/sessions/:id", method: :post %>
 
-=======
     <nav>
       <ul id="navbar">
         <% if logged_in?%>
@@ -33,7 +28,7 @@
         <div><%= v %></div>
       <% end %>
     </div>
->>>>>>> ux_dashboard
+
     <div class="container">
       <%= yield %>
     </div>
