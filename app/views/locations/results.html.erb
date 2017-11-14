@@ -4,7 +4,7 @@
 <% @array.each do |location| %>
   <div>
     <h4><%= location.name %></h4>
-    <p>ADDRESS HERE</p>
+    <p><%= location.real_location %></p>
     <p><%= location.phone %></p>
     <%= submit_tag "Select #{location.name}"%>
   </div>

@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration[5.1]
       t.datetime :date
       t.string :title
       t.integer :location_id
-      t.boolean :admittance
+      t.boolean :admittance, default: true
     end
   end
 end

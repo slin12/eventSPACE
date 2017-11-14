@@ -3,7 +3,7 @@
 <%= form_for @event do |f| %>
   <h4>Location:</h4>
   <h6><%= @location.name %></h6>
-  <p>ADDRESS HERE</p>
+  <p><%= @location.real_location %></p>
   <p><%= @location.phone %></p>
   <%= f.hidden_field :location_id, value: @location.id %>
   <br><br>

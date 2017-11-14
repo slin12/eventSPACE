@@ -23,4 +23,11 @@ class Event < ApplicationRecord
       "Private"
     end
   end
+
+  def private=(arg)
+    if arg == "on"
+      self.admittance = false
+    end
+  end
+
 end
