@@ -2,7 +2,7 @@
 
 <%= form_tag("/search", method: "get") do %>
   <%= label_tag(:event, "Search for:") %>
-  <%= text_field_tag(:zip) %>
+  <%= text_field_tag(:zip, nil, placeholder: 'search by zipcode') %>
   <%= submit_tag("Search", class: "btn waves-effect waves-light cyan lighten-1") %>
 <% end %>
 

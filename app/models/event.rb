@@ -50,4 +50,8 @@ class Event < ApplicationRecord
     Rsvp.where("event_id = ?", self.id).select {|x| x.attending == "no"}
   end
 
+  def self.public_events
+    Event.where("admittance = ?", true)
+  end
+
 end

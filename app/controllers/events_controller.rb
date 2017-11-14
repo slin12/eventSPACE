@@ -3,11 +3,11 @@ class EventsController < ApplicationController
 
   def index
     if params[:zip]
-      @events = Event.all.select do |event|
+      @events = Event.public_events.select do |event|
         (event.location.zip == params[:zip].to_i)
       end
     else
-      @events = Event.all
+      @events = Event.public_events
     end
   end
 
