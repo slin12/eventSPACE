@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :rsvps, only: [:create]
   resources :friendships, only: [:create]
+  resources :messages, only: [:create]
 
   # Landing Page
   get '/', to: "static#home", as: 'root'
@@ -20,5 +21,5 @@ Rails.application.routes.draw do
 
   post '/rspv', to: "rsvps#update", as: 'rsvps_edit'
 
-  
+
 end

@@ -25,33 +25,61 @@
       </div>
     <% end %>
 
+    <div class="row">
+        <h5>Messages</h5>
+        <div class="message-box col s10">
+        <%= form_for current_user.messages.build do |f| %>
+        <%= f.label :content, "Post A Comment" %>
+        <%= f.text_area :content, placeholder: 'are you bringing a llama with you?' %>
+        <%= f.hidden_field :event_id, value: @event.id %>
+        <%= f.submit "Post", class: "btn waves-effect waves-light cyan lighten-1" %>
+        <% end %>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col s10 message-scroll">
+        <% @event.order_by_recent.each do |message| %>
+        <p> <%= link_to message.user.name, user_path(message.user) %> <i>said</i>: <%= message.content %>
+        <br>
+        <small>POSTED AT <%= message.format_time %></small>
+        </p>
+
+        <% end %>
+      </div>
+    </div>
+
+    <br>
+
+  <div class="row">
     <h5>People Going</h5>
-    <ul>
       <% @event.going.each do |rsvp| %>
-        <%= link_to rsvp.user.name, user_path(rsvp.user) %>
-        <br>
+        <div class="name-icon col s2 center">
+          <%= image_tag rsvp.user.profile.thumb.url, size: 50 %> <br>
+          <%= link_to rsvp.user.name, user_path(rsvp.user) %>
+        </div>
       <% end %>
-      <li></li>
-    </ul>
+  </div>
 
+  <div class="row">
     <h5>People Invited</h5>
-    <ul>
-      <% @event.invited.each do |rsvp| %>
+    <% @event.invited.each do |rsvp| %>
+      <div class="name-icon col s2 center">
+        <%= image_tag rsvp.user.profile.thumb.url, size: 50 %> <br>
         <%= link_to rsvp.user.name, user_path(rsvp.user) %>
-        <br>
-      <% end %>
-      <li></li>
-    </ul>
+      </div>
+    <% end %>
+  </div>
 
+  <div class="row">
     <h5>People Not Going</h5>
-    <ul>
-      <% @event.not_going.each do |rsvp| %>
+    <% @event.not_going.each do |rsvp| %>
+      <div class="name-icon col s2 center">
+        <%= image_tag rsvp.user.profile.thumb.url, size: 50 %> <br>
         <%= link_to rsvp.user.name, user_path(rsvp.user) %>
-        <br>
-      <% end %>
-      <li></li>
-    </ul>
+      </div>
+    <% end %>
+  </div>
 
   </div>
   <div class="col s5">

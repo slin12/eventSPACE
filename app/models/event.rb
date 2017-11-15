@@ -56,4 +56,8 @@ class Event < ApplicationRecord
     Event.where("admittance = ?", true)
   end
 
+  def order_by_recent
+    self.messages.order('created_at DESC')
+  end
+
 end

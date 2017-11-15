@@ -71,3 +71,21 @@ h3 {
 .rsvp-box {
   margin-bottom: 40px;
 }
+
+.name-icon a{
+  text-align: center;
+}
+
+.name-icon img {
+  border-radius: 100%;
+}
+
+.message-scroll {
+  height: 300px;
+  overflow: auto;
+  border-left: 1px double #E22F5D;
+}
+
+a {
+  color: #26c6da;
+}
