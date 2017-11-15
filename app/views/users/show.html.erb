@@ -1,23 +1,15 @@
 <div class="user">
-<<<<<<< HEAD
-  <h1><%= @user.name.capitalize %></h1>
-  <% if @user.profile? %>
-  <%= image_tag @user.profile.url, size:"250"%>
-  <% end %>
-  <h4>🎂<%= @user.birthday.strftime("%b %-m, %Y")%>🎂</h4>
-  <p>About <%=@user.name.capitalize %>: <%= @user.bio %></p>
-  <% if @user.id != session[:user_id] %>
-=======
   <br>
   <br>
   <%= image_tag @user.profile.url, size:"250"%>
   <h1><%= @user.name %></h1>
   <p>🎂 <%= @user.birthday.strftime("%b %-m %Y") %></p>
   <p><%= @user.bio %></p>
->>>>>>> friend_notificatons
+  <% unless @user.id == session[:user_id] %>
   <p><%= form_for @friendship, url: friendships_path do |f| %>
     <%= f.hidden_field :user_id, value: @user.id %>
     <%= f.submit @friend_status %>
+    <% end %>
   <% end %></p>
 </div>
   <div class="friends-list">

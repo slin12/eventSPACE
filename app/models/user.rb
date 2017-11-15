@@ -8,8 +8,8 @@ class User < ApplicationRecord
   mount_uploader :profile, ProfileUploader
   validates :email, uniqueness: true
   validates :name, presence: true
-  validates :password, length: { in: 4..8 }
-  validates :profile, presence: { message: "should get a photo uploaded..."}
+  validates :password, length: { in: 4..32 }
+
 
 
   def friend?(current_user)

@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .column {
 float: left;
-width: 50%;
+width: 31%;
 padding: 10px;
 }
 
@@ -31,4 +31,12 @@ div .events-list {
   padding-left: 20px;
   width: 32%;
   float: left;
+}
+
+.friend_list img{
+  border-radius: 100%;
+}
+
+.user_search img {
+  border-radius: 100%;
 }

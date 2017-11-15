@@ -48,9 +48,14 @@ class UsersController < ApplicationController
   end
 
   def update
+    # byebug
     @current_user = current_user
-    @current_user.update(users_params)
-    redirect_to user_dashboard_path
+    if @current_user.update(users_params)
+      redirect_to user_dashboard_path
+    else
+      flash.now[:notice] = "Please try again.."
+      render :edit
+    end
   end
 
   def destroy

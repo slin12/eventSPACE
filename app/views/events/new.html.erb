@@ -35,7 +35,7 @@
   <div class="friends-box">
     <% current_user.accepted_friends.each do |friend| %>
     <input type="checkbox" id="<%= friend.id %>" name="event[user_ids][]" value="<%= friend.id %>"/>
-    <label for="<%= friend.id %>"><%= friend.name %></label>
+    <label for="<%= friend.id %>"><%= image_tag friend.profile.thumb.url, size: 50 %><%= friend.name %></label>
       <br>
     <% end %>
   </div>

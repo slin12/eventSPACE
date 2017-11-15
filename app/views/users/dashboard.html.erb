@@ -7,8 +7,8 @@
       <%= submit_tag "Search" %><br>
     <% end %>
   </div>
-
-  <div class="user">
+<div class="row">
+  <div class="user col s4">
     <br>
     <br>
     <%= image_tag @current_user.profile.url, size:"250" %>
@@ -18,8 +18,23 @@
     <p><%= link_to "Edit profile", edit_user_path(@current_user) %></p>
   </div>
 
-  <div class="friend_requests">
-    <h2>Friend Requests</h2>
+  <div class="col s4">
+    <h3>Invited Events:</h3>
+    <% if current_user.invited_events.empty? %>
+      <p>None! Why don't you make one?</p>
+    <% else %>
+        <% current_user.invited_events.each do |rsvp| %>
+        <div class="invited-event column">
+        <h5><%= link_to rsvp.event.title, event_path(rsvp.event) %></h5>
+          <small>Invited by <%= rsvp.event.host.name %></small>
+          <p><%= rsvp.event.location.name %> // <%= rsvp.event.real_location %></p>
+        </div>
+        <% end %>
+    <% end %>
+  </div>
+
+  <div class="friend_requests col s4">
+    <h3>Friend Requests</h3>
     <% @friend_requests.each do |friend| %>
       <%= form_for @friendship do |f| %>
         <p>
@@ -28,43 +43,19 @@
         </p>
       <% end %>
     <% end %>
+    <div class="friend_list">
+      <h3>Friends List</h3>
+      <ul>
+        <% @friends.each do |friend| %>
+          <li><%= image_tag friend.profile.thumb.url, size: 50 %><%= link_to friend.name, user_path(friend) %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-
-  <div class="friend_list">
-    <h2>Friends List</h2>
-    <ul>
-      <% @friends.each do |friend| %>
-        <li><%= image_tag friend.profile.thumb.url, size: 50 %><%= link_to friend.name, user_path(friend) %></li>
-      <% end %>
-    </ul>
-  </div>
-
-
-<div class="container">
-  <h3>Invited Events:</h3>
-  <% if current_user.invited_events.empty? %>
-    <p>None! Why don't you make one?</p>
-  <% else %>
-      <% current_user.invited_events.each do |rsvp| %>
-      <div class="invited-event">
-      <h5><%= link_to rsvp.event.title, event_path(rsvp.event) %></h5>
-        <small>Invited by <%= rsvp.event.host.name %></small>
-        <p><%= rsvp.event.location.name %> // <%= rsvp.event.real_location %></p>
-      </div>
-      <% end %>
-  <% end %>
 </div>
-  <div class="column">
-    <p>one column can hold some stuff, maybe some recent friends</p>
-  </div>
-  <div class="column">
 
-</div>
-<div>
-  <div class="column">
-    <p>third column for something else?</p>
-  </div>
-  <div class="column">
-    <p>fourth column, I just added this one for funsies</p>
+<div class="upcoming_events row">
+  <div class="col s12">
+    <h3 class="center">Events Happening Soon..</h3>
   </div>
 </div>
