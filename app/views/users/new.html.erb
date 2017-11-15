@@ -11,7 +11,9 @@
 
 <%= form_for @user do |f|  %>
   <%= f.label :profile, "Profile Photo" %>
-  <%= f.file_field :profile %><br>
+  <%= f.file_field :profile %><br><br>
+  <%= f.label :embed, "Embedded SoundCloud Player" %><br>
+  <%= f.text_area :embed, placeholder: "You can paste the embedded SoundCloud player code here (set height to 150):"%><br>
   <%= f.label :email, "Email" %><br>
   <%= f.text_field :email %><br>
   <%= f.label :name, "Name" %><br>
