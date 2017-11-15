@@ -69,7 +69,7 @@ class UsersController < ApplicationController
   private
 
   def users_params
-    params.require(:user).permit(:email, :name, :password, :password_confirmation, :birthday, :bio, :profile)
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :birthday, :bio, :profile, :embed)
   end
 
   def friend_status(user)

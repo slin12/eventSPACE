@@ -65,9 +65,31 @@ h3 {
 }
 
 .invited-event {
-  line-height: 5px;
+  line-height: 14px;
 }
 
 .rsvp-box {
   margin-bottom: 40px;
+}
+
+.name-icon a{
+  text-align: center;
+}
+
+.name-icon img {
+  border-radius: 100%;
+}
+
+.message-scroll {
+  height: 300px;
+  overflow: auto;
+  border-left: 1px double #E22F5D;
+}
+
+a {
+  color: #26c6da;
+}
+
+.invited {
+  overflow: auto;
 }

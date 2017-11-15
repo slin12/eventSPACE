@@ -3,8 +3,8 @@
   <div class="search_bar">
     <p>Search People </p>
     <p><%= form_tag users_path, method: 'get' do %></p>
-      <%= text_field_tag :search, params[:search] %><br>
-      <%= submit_tag "Search" %><br>
+      <%= text_field_tag :search, params[:search], placeholder: 'search for friends by name' %><br>
+      <%= submit_tag "Search", class: "btn waves-effect waves-light cyan lighten-1" %><br>
     <% end %>
   </div>
 <div class="row">
@@ -16,18 +16,20 @@
     <p>🎂 <%= @current_user.birthday.strftime("%b %-m %Y") %></p>
     <p><%= @current_user.bio %></p>
     <p><%= link_to "Edit profile", edit_user_path(@current_user) %></p>
+    <p><%= link_to "View Public Profile", user_path(@current_user) %></p>
   </div>
 
-  <div class="col s4">
+  <div class="col s4 invited">
     <h3>Invited Events:</h3>
     <% if current_user.invited_events.empty? %>
       <p>None! <%= link_to "Why don't you make one?", new_location_path %></p>
     <% else %>
         <% current_user.invited_events.each do |rsvp| %>
-        <div class="invited-event column">
+        <div class="invited-event">
         <h5><%= link_to rsvp.event.title, event_path(rsvp.event) %></h5>
           <small>Invited by <%= rsvp.event.host.name %></small>
-          <p><%= rsvp.event.location.name %> // <%= rsvp.event.real_location %></p>
+          <p><%= rsvp.event.real_time %>
+          <br><%= rsvp.event.location.name %> // <%= rsvp.event.real_location %></p>
         </div>
         <% end %>
     <% end %>
@@ -35,25 +37,38 @@
 
   <div class="friend_requests col s4">
     <h3>Friend Requests</h3>
-    <% if @friend_requests == [] %>
-      <p>You don't have any friend requests right now!</p>
-    <% else %>
-      <% @friend_requests.each do |friend| %>
-        <%= form_for @friendship do |f| %>
-          <p>
-            <%= link_to friend.name, user_path(friend) %> <%= f.submit "Accept Request"%>
+    <% if @friend_requests.empty? %>
+      <p>You don't have any friend requests right now :(</p>
+    <% end %>
+    <% @friend_requests.each do |friend| %>
+      <%= form_for @friendship do |f| %>
+        <div class="row valign-wrapper">
+          <div class="col s4 center">
+            <%= image_tag friend.profile.thumb.url, size: 50, class: 'circle' %>
+            <br>
+            <%= link_to friend.name, user_path(friend) %>
+          </div>
+          <div class="col s8">
+            <%= f.submit "Accept Request", class: "btn waves-effect waves-light cyan lighten-1"%>
             <%= f.hidden_field :user_id, value: friend.id %>
-          </p>
-        <% end %>
+          </div>
+        </div>
       <% end %>
     <% end %>
     <div class="friend_list">
       <h3>Friends List</h3>
-      <ul>
-        <% @friends.each do |friend| %>
-          <li><%= image_tag friend.profile.thumb.url, size: 50 %> <%= link_to friend.name, user_path(friend) %></li>
+        <% if @friends.empty? %>
+          <p>You have no friends! Add some!</p>
         <% end %>
-      </ul>
+        <div class="row">
+        <% @friends.each do |friend| %>
+          <div class="col s3 center">
+          <%= image_tag friend.profile.thumb.url, size: 50 %>
+          <br>
+          <%= link_to friend.name, user_path(friend) %>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
@@ -61,13 +76,11 @@
 <div class="upcoming_events row">
   <div class="col s12">
     <h3 class="center">Upcoming Events</h3>
-    <%@events.each do |event|%>
-    <div class="event-data">
-      <h5><%=link_to event.title, event_path(event)%></h5>
-      <i>Hosted by</i>: <%= event.host.name %><br>
-      <i>Where:</i> <%= event.location.name %> // <%= event.real_location  %><br>
-      <i>When:</i> <%= event.real_time  %><br>
-      <i>Admittance:</i> <%= event.is_private? %>
+    <% current_user.events_going.each do |event| %>
+      <h5> <%= link_to event.title, event_path(event) %> </h5>
+      <p><%= event.real_time %>
+      <br><%= event.location.name %> // <%= event.real_location %></p>
+      <p></p>
     <% end %>
   </div>
 </div>

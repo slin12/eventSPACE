@@ -46,4 +46,9 @@ class User < ApplicationRecord
     end
   end
 
+  def events_going
+    rsvps = self.rsvps.select {|x| x.attending == "yes"}
+    rsvps.map {|rsvp| rsvp.event}.sort_by {|x| x.date}
+  end
+
 end
