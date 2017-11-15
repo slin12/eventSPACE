@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171114194850) do
+ActiveRecord::Schema.define(version: 20171115175833) do
 
   create_table "events", force: :cascade do |t|
     t.datetime "date"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20171114194850) do
     t.text "bio"
     t.date "birthday"
     t.string "profile"
+    t.text "embed"
   end
 
 end

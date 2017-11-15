@@ -40,6 +40,14 @@ html, body {
   border-top: 0.7px solid black;
 }
 
+.flash {
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #E22F5D;
+  color: white;
+}
+
 .login {
   height: 600px;
   margin-top: 40px;

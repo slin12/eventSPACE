@@ -5,3 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Message.create([{event_id: 2, user_id: 2, content: "Hey guys, do you remember me?"},{event_id: 2, user_id: 4, content: "LUDA!"},{event_id: 2, user_id: 5, content: "Anybody need acid?"}])

@@ -10,7 +10,15 @@
 
 <body>
 
+
 <div class="bg">
+  <% if !flash.empty? %>
+    <div class="flash">
+      <% flash.each do |k, v| %>
+        <div><%= v %></div>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="row">
     <div class="col s1">
