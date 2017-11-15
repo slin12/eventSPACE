@@ -6,6 +6,11 @@ class User < ApplicationRecord
   has_many :events, through: :rsvps
   has_secure_password
   mount_uploader :profile, ProfileUploader
+  validates :email, uniqueness: true
+  validates :name, presence: true
+  validates :password, length: { in: 4..8 }
+  validates :profile, presence: { message: "should get a photo uploaded..."}
+
 
   def friend?(current_user)
     !! Friendship.all.find_by(user_id: self.id, friend_id: current_user.id)

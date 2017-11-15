@@ -1,4 +1,13 @@
 <h1>Gimme The Deets:</h1>
+<div class="error-messages">
+  <ul>
+  <% if @event.errors.any? %>
+  <% @event.errors.full_messages.each do |m| %>
+  <li><%= m %></li>
+  <% end %>
+  <% end %>
+</ul>
+</div>
 
 <%= form_for @event do |f| %>
   <h4>Location:</h4>
@@ -26,7 +35,7 @@
   <div class="friends-box">
     <% current_user.accepted_friends.each do |friend| %>
     <input type="checkbox" id="<%= friend.id %>" name="event[user_ids][]" value="<%= friend.id %>"/>
-    <label for="<%= friend.id %>"><%= friend.name    %></label>
+    <label for="<%= friend.id %>"><%= friend.name %></label>
       <br>
     <% end %>
   </div>
