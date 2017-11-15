@@ -57,6 +57,7 @@
 
   <div class="row">
     <h5>People Going</h5>
+    
       <% @event.going.each do |rsvp| %>
         <div class="name-icon col s2 center">
           <%= image_tag rsvp.user.profile.thumb.url, size: 50 %> <br>
@@ -67,6 +68,11 @@
 
   <div class="row">
     <h5>People Invited</h5>
+
+    <% if @event.invited.empty? %>
+      <p> None </p>
+    <% end %>
+
     <% @event.invited.each do |rsvp| %>
       <div class="name-icon col s2 center">
         <%= image_tag rsvp.user.profile.thumb.url, size: 50 %> <br>
@@ -77,6 +83,10 @@
 
   <div class="row">
     <h5>People Not Going</h5>
+    <% if @event.not_going.empty? %>
+      <p> None </p>
+    <% end %>
+
     <% @event.not_going.each do |rsvp| %>
       <div class="name-icon col s2 center">
         <%= image_tag rsvp.user.profile.thumb.url, size: 50 %> <br>

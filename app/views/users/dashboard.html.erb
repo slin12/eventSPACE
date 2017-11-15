@@ -18,7 +18,7 @@
     <p><%= link_to "Edit profile", edit_user_path(@current_user) %></p>
   </div>
 
-  <div class="col s4">
+  <div class="col s4 invited">
     <h3>Invited Events:</h3>
     <% if current_user.invited_events.empty? %>
       <p>None! Why don't you make one?</p>
@@ -75,5 +75,11 @@
 <div class="upcoming_events row">
   <div class="col s12">
     <h3 class="center">Upcoming Events</h3>
+    <% current_user.events_going.each do |event| %>
+      <h5> <%= link_to event.title, event_path(event) %> </h5>
+      <p><%= event.real_time %>
+      <br><%= event.location.name %> // <%= event.real_location %></p>
+      <p></p>
+    <% end %>
   </div>
 </div>

@@ -13,6 +13,10 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    if @event.admittance == false && !@event.users.include?(current_user)
+      flash[:notice] = "That is a private event!"
+      redirect_to events_path
+    end
   end
 
   def create
