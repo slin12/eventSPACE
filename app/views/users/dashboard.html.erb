@@ -1,13 +1,42 @@
 <div class="dashboard-welcome">
 
-  <h3>Hello <%= current_user.name %></h3>
-
   <div class="search_bar">
     <p>Search People </p>
     <p><%= form_tag users_path, method: 'get' do %></p>
       <%= text_field_tag :search, params[:search] %><br>
       <%= submit_tag "Search" %><br>
     <% end %>
+  </div>
+
+  <div class="user">
+    <br>
+    <br>
+    <%= image_tag @current_user.profile.url, size:"250" %>
+    <h1><%= @current_user.name %></h1>
+    <p>🎂 <%= @current_user.birthday.strftime("%b %-m %Y") %></p>
+    <p><%= @current_user.bio %></p>
+    <p><%= link_to "Edit profile", edit_user_path(@current_user) %></p>
+  </div>
+
+  <div class="friend_requests">
+    <h2>Friend Requests</h2>
+    <% @friend_requests.each do |friend| %>
+      <%= form_for @friendship do |f| %>
+        <p>
+          <%= link_to friend.name, user_path(friend) %> <%= f.submit "Accept Request"%>
+          <%= f.hidden_field :user_id, value: friend.id %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="friend_list">
+    <h2>Friends List</h2>
+    <ul>
+      <% @friends.each do |friend| %>
+        <li><%= image_tag friend.profile.thumb.url, size: 50 %><%= link_to friend.name, user_path(friend) %></li>
+      <% end %>
+    </ul>
   </div>
 
 
@@ -29,13 +58,7 @@
     <p>one column can hold some stuff, maybe some recent friends</p>
   </div>
   <div class="column">
-    <h3>Friends List</h3>
-    <ul>
-      <% @friends.each do |friend| %>
-        <li><%= image_tag friend.profile.thumb.url, size: 50%><%= link_to friend.name, user_path(friend) %></li>
-      <% end %>
-    </ul>
-  </div>
+
 </div>
 <div>
   <div class="column">
