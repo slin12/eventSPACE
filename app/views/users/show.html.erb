@@ -21,12 +21,19 @@
   <div class="friends-list col s4">
     <h4 class="center">Friends</h4>
     <p><%= "You have no friends :(" if @user.friends.count == 0 %>
+
     <p class="center"><%= pluralize(@user.friends.count, "friend") %></p>
-    <ul>
+
+    <div class="row">
       <% @friends.each do |friend| %>
-        <li class="each_friend"><%= image_tag friend.profile.thumb.url, size: 50 %> <%= link_to friend.name, user_path(friend) %></li>
+        <div class="col s3 center">
+        <%= image_tag friend.profile.thumb.url, size: 50 %>
+        <br>
+        <%= link_to friend.name, user_path(friend) %>
+      </div>
       <% end %>
-    </ul>
+    </div>
+
   </div>
   <div class="events-list col s4">
     <h4>Upcoming Events</h4>
