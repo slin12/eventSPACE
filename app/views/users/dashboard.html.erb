@@ -37,19 +37,30 @@
     <h3>Friend Requests</h3>
     <% @friend_requests.each do |friend| %>
       <%= form_for @friendship do |f| %>
-        <p>
-          <%= link_to friend.name, user_path(friend) %> <%= f.submit "Accept Request"%>
-          <%= f.hidden_field :user_id, value: friend.id %>
-        </p>
+        <div class="row valign-wrapper">
+          <div class="col s4 center">
+            <%= image_tag friend.profile.thumb.url, size: 50, class: 'circle' %>
+            <br>
+            <%= link_to friend.name, user_path(friend) %>
+          </div>
+          <div class="col s8">
+            <%= f.submit "Accept Request", class: "btn waves-effect waves-light cyan lighten-1"%>
+            <%= f.hidden_field :user_id, value: friend.id %>
+          </div>
+        </div>
       <% end %>
     <% end %>
     <div class="friend_list">
       <h3>Friends List</h3>
-      <ul>
+        <div class="row">
         <% @friends.each do |friend| %>
-          <li><%= image_tag friend.profile.thumb.url, size: 50 %><%= link_to friend.name, user_path(friend) %></li>
+          <div class="col s3 center">
+          <%= image_tag friend.profile.thumb.url, size: 50 %>
+          <br>
+          <%= link_to friend.name, user_path(friend) %>
+        </div>
         <% end %>
-      </ul>
+      </div>
     </div>
   </div>
 </div>

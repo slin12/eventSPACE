@@ -8,7 +8,7 @@
   <% unless @user.id == session[:user_id] %>
   <p><%= form_for @friendship, url: friendships_path do |f| %>
     <%= f.hidden_field :user_id, value: @user.id %>
-    <%= f.submit @friend_status %>
+    <%= f.submit @friend_status, class: "btn waves-effect waves-light cyan lighten-1" %>
     <% end %>
   <% end %></p>
 </div>
