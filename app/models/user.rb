@@ -26,6 +26,15 @@ class User < ApplicationRecord
     end
   end
 
+  def pending_friend_requests
+    friendships = Friendship.all.where(friend_id: self.id)
+    requests = []
+    friendships.each do |friendship|
+      requests << User.find(friendship.user_id)
+    end
+    requests - self.accepted_friends
+  end
+
   def self.search(search)
     if search
       User.where(["name LIKE ?", "%#{search}%"])
@@ -33,6 +42,5 @@ class User < ApplicationRecord
       nil
     end
   end
-
 
 end

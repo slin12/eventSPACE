@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   get '/search', to: 'events#index'
 
   post '/rspv', to: "rsvps#update", as: 'rsvps_edit'
+
+  
 end

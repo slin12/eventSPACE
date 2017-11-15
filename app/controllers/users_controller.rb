@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize_user, only: [:dashboard]
+  before_action :authorize_user, only: [:dashboard, :edit]
   helper_method :friend_status
 
 
@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    # byebug
     @user = User.new(users_params)
     if @user.save
       session[:user_id] = @user.id
@@ -39,12 +38,19 @@ class UsersController < ApplicationController
 
   def dashboard
     @friends = current_user.accepted_friends
+    @current_user = current_user
+    @friend_requests = current_user.pending_friend_requests
+    @friendship = Friendship.new
   end
 
   def edit
+    @current_user = current_user
   end
 
   def update
+    @current_user = current_user
+    @current_user.update(users_params)
+    redirect_to user_dashboard_path
   end
 
   def destroy
