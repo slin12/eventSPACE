@@ -5,7 +5,8 @@ html, body {
 
 .bg {
     /* The image used */
-    background-image: url("./homepage.jpg");
+    background-image: url("https://static.pexels.com/photos/196652/pexels-photo-196652.jpeg");
+    /*  ./homepage.jpg */
 
     /* Full height */
     height: 100%;

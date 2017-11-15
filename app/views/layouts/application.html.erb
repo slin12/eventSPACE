@@ -13,7 +13,7 @@
 
     <nav class="white">
       <ul id="navbar">
-        <a href="/user/dashboard"><%= image_tag 'logo', size: "150x45" %></a>
+        <!-- <a href="/user/dashboard"><%# image_tag 'logo', size: "150x45" %></a> -->
         <% if logged_in?%>
           <li><%=  link_to "Events", events_path %><li>
           <li><%=  link_to "New Event", new_location_path %></li>
