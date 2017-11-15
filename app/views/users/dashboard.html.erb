@@ -3,7 +3,7 @@
   <div class="search_bar">
     <p>Search People </p>
     <p><%= form_tag users_path, method: 'get' do %></p>
-      <%= text_field_tag :search, params[:search] %><br>
+      <%= text_field_tag :search, params[:search], placeholder: 'search for friends by name' %><br>
       <%= submit_tag "Search", class: "btn waves-effect waves-light cyan lighten-1" %><br>
     <% end %>
   </div>
@@ -24,10 +24,11 @@
       <p>None! Why don't you make one?</p>
     <% else %>
         <% current_user.invited_events.each do |rsvp| %>
-        <div class="invited-event column">
+        <div class="invited-event">
         <h5><%= link_to rsvp.event.title, event_path(rsvp.event) %></h5>
           <small>Invited by <%= rsvp.event.host.name %></small>
-          <p><%= rsvp.event.location.name %> // <%= rsvp.event.real_location %></p>
+          <p><%= rsvp.event.real_time %>
+          <br><%= rsvp.event.location.name %> // <%= rsvp.event.real_location %></p>
         </div>
         <% end %>
     <% end %>
@@ -35,6 +36,9 @@
 
   <div class="friend_requests col s4">
     <h3>Friend Requests</h3>
+    <% if @friend_requests.empty? %>
+      <p>None</p>
+    <% end %>
     <% @friend_requests.each do |friend| %>
       <%= form_for @friendship do |f| %>
         <div class="row valign-wrapper">
@@ -52,6 +56,9 @@
     <% end %>
     <div class="friend_list">
       <h3>Friends List</h3>
+        <% if @friends.empty? %>
+          <p>You have no friends! Add some!</p>
+        <% end %>
         <div class="row">
         <% @friends.each do |friend| %>
           <div class="col s3 center">
@@ -67,6 +74,6 @@
 
 <div class="upcoming_events row">
   <div class="col s12">
-    <h3 class="center">Events Happening Soon..</h3>
+    <h3 class="center">Upcoming Events</h3>
   </div>
 </div>
