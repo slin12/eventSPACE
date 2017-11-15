@@ -2,7 +2,9 @@
 <br>
 <%= form_for @current_user do |f|  %>
     <%= f.label :profile, "Profile Photo" %>
-    <%= f.file_field :profile %><br>
+    <%= f.file_field :profile %><br><br>
+    <%= f.label :embed, "Embedded SoundCloud Player" %>
+    <%= f.text_area :embed, placeholder: "You can change your embedded player here:" %>
     <%= f.label :name, "Name" %><br>
     <%= f.text_field :name %><br>
     <%= f.label :birthday, "Birthday" %><br>
