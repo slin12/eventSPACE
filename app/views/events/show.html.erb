@@ -29,7 +29,7 @@
     <h5>People Going</h5>
     <ul>
       <% @event.going.each do |rsvp| %>
-        <%= link_to rsvp.user.name, user_path(rsvp.user) %>
+       <%= image_tag rsvp.user.profile.thumb.url, size: 50 %> <%= link_to rsvp.user.name, user_path(rsvp.user) %>
         <br>
       <% end %>
       <li></li>
@@ -38,7 +38,7 @@
     <h5>People Invited</h5>
     <ul>
       <% @event.invited.each do |rsvp| %>
-        <%= link_to rsvp.user.name, user_path(rsvp.user) %>
+        <%= image_tag rsvp.user.profile.thumb.url, size: 50 %> <%= link_to rsvp.user.name, user_path(rsvp.user) %>
         <br>
       <% end %>
       <li></li>

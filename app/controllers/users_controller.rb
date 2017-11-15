@@ -16,8 +16,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @friends = @user.accepted_friends
     @friendship = Friendship.new
     @friend_status = friend_status(@user)
+    @events = @user.events.select do |event|
+      event.is_private? == "Public" && event.going.map(&:user_id).include?(@user.id)
+    end
   end
 
   def new
@@ -41,6 +45,7 @@ class UsersController < ApplicationController
     @current_user = current_user
     @friend_requests = current_user.pending_friend_requests
     @friendship = Friendship.new
+    @events = @current_user.events
   end
 
   def edit
@@ -53,7 +58,7 @@ class UsersController < ApplicationController
     if @current_user.update(users_params)
       redirect_to user_dashboard_path
     else
-      flash.now[:notice] = "Please try again.."
+      flash.now[:notice] = "Information entered was invalid, please try again."
       render :edit
     end
   end
