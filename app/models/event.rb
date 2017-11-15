@@ -4,6 +4,8 @@ class Event < ApplicationRecord
   has_many :rsvps
   has_many :users, through: :rsvps
   belongs_to :host, class_name: 'User'
+  validates :title, :time, :date, presence: true
+
 
   validates :title, :date, :time, presence: true
 
