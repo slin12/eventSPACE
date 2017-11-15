@@ -26,10 +26,9 @@
     <% end %>
 
     <div class="row">
-        <h5>Messages</h5>
+        <h5>Post A Comment</h5>
         <div class="message-box col s10">
         <%= form_for current_user.messages.build do |f| %>
-        <%= f.label :content, "Post A Comment" %>
         <%= f.text_area :content, placeholder: 'are you bringing a llama with you?' %>
         <%= f.hidden_field :event_id, value: @event.id %>
         <%= f.submit "Post", class: "btn waves-effect waves-light cyan lighten-1" %>
@@ -38,7 +37,12 @@
     </div>
 
     <div class="row">
+      <h5>Messages</h5>
       <div class="col s10 message-scroll">
+        <% if @event.messages.empty? %>
+          <p>Nobody has said anything yet!</p>
+        <% end %>
+
         <% @event.order_by_recent.each do |message| %>
         <p> <%= link_to message.user.name, user_path(message.user) %> <i>said</i>: <%= message.content %>
         <br>
