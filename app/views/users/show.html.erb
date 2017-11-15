@@ -27,7 +27,7 @@
     <div class="row">
       <% @friends.each do |friend| %>
         <div class="col s3 center">
-        <%= image_tag friend.profile.thumb.url, size: 50 %>
+        <%= image_tag friend.profile.thumb.url, size: 50, class: 'circle' %>
         <br>
         <%= link_to friend.name, user_path(friend) %>
       </div>
