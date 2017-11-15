@@ -16,6 +16,7 @@
     <p>🎂 <%= @current_user.birthday.strftime("%b %-m %Y") %></p>
     <p><%= @current_user.bio %></p>
     <p><%= link_to "Edit profile", edit_user_path(@current_user) %></p>
+    <p><%= link_to "View Public Profile", user_path(@current_user) %></p>
   </div>
 
   <div class="col s4 invited">
