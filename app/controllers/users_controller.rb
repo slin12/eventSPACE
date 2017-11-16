@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     @events = @user.events.select do |event|
       event.is_private? == "Public" && event.going.map(&:user_id).include?(@user.id)
     end
+    @events = @events.sort_by { |event| event.date }
   end
 
   def new
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
     @current_user = current_user
     @friend_requests = current_user.pending_friend_requests
     @friendship = Friendship.new
-    @events = @current_user.events
+    @events = @current_user.events.sort_by { |event| event.date }
   end
 
   def edit

@@ -20,7 +20,7 @@
           <li id="logout" class="right"><%= link_to "Logout", "/sessions/:id", method: :post%></li>
           <li id="dashboard"><%= link_to "Dashboard", user_dashboard_path%></li>
           <% @user = current_user %>
-          <li id="profile" class="right"><%= image_tag @user.profile.thumb.url, size: 50%></li>
+          <li id="profile" class="right"><%= link_to (image_tag @user.profile.thumb.url, size: 50), user_dashboard_path %></li>
         <% else %>
           <li><%= link_to "Sign In", root_path%></li>
         <% end %>

@@ -44,7 +44,7 @@
       <%= form_for @friendship do |f| %>
         <div class="row valign-wrapper">
           <div class="col s4 center">
-            <%= image_tag friend.profile.thumb.url, size: 50, class: 'circle' %>
+            <%= link_to (image_tag friend.profile.thumb.url, size: 50, class: 'circle'), user_path(friend) %>
             <br>
             <%= link_to friend.name, user_path(friend) %>
           </div>
@@ -63,7 +63,7 @@
         <div class="row">
         <% @friends.each do |friend| %>
           <div class="col s3 center">
-          <%= image_tag friend.profile.thumb.url, size: 50 %>
+          <%= link_to (image_tag friend.profile.thumb.url, size: 50), user_path(friend) %>
           <br>
           <%= link_to friend.name, user_path(friend) %>
         </div>

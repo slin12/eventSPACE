@@ -6,8 +6,9 @@ class EventsController < ApplicationController
       @events = Event.public_events.select do |event|
         (event.location.zip == params[:zip].to_i)
       end
+      @events = @events.sort_by { |event| event.date }
     else
-      @events = Event.public_events
+      @events = Event.public_events.sort_by { |event| event.date }
     end
   end
 
