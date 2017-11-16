@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :events, except: [:new]
   resources :locations, only: [:new, :create]
   resources :users
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   post '/rspv', to: "rsvps#update", as: 'rsvps_edit'
 
   #404 error
-  get '/page_not_found', to: 'static#page_not_found', as: 'page_not_found'
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
 
 end
