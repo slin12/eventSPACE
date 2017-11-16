@@ -22,7 +22,7 @@
     <h4 class="center">Friends</h4>
     <p><%= "You have no friends :(" if @user.friends.count == 0 %>
 
-    <p class="center"><%= pluralize(@user.friends.count, "friend") %></p>
+    <p class="center"><%= pluralize(@user.accepted_friends.count, "friend") %></p>
 
     <div class="row">
       <% @friends.each do |friend| %>
