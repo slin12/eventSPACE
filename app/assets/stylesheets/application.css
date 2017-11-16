@@ -93,3 +93,7 @@ a {
 .invited {
   overflow: auto;
 }
+
+.error-messages {
+  color: #E22F5D;
+}
