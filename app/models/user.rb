@@ -40,7 +40,8 @@ class User < ApplicationRecord
 
   def self.search(search)
     if search
-      User.where(["name LIKE ?", "%#{search}%"])
+      # User.where(["name LIKE ?", "%#{search}%"])
+      User.all.select {|user| user.name.downcase.include?(search.downcase)}
     else
       nil
     end

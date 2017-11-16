@@ -2,7 +2,7 @@
   <p>Search</p>
   <p><%= form_tag users_path, method: 'get' do %></p>
     <%= text_field_tag :search, params[:search] %><br>
-    <%= submit_tag "Search" %><br>
+    <%= submit_tag "Search", class: "btn waves-effect waves-light cyan lighten-1" %><br>
   <% end %>
 </div>
 
