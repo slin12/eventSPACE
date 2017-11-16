@@ -23,7 +23,7 @@ class ProfileUploader < CarrierWave::Uploader::Base
   # end
 
   def default_url
-    "https://lh5.googleusercontent.com/BpouUW6IbEYsb6ptmMMHplnW0KYMjY6nVb8CxVJZnGQLMZdYsol4E8Fw2MApZTc6EbbKl0u9bCQVb7bR4OIX=w1241-h680"
+    "http://wldstyl.com/wp-content/uploads/2017/11/default.jpg"
   end
 
   # Process files as they are uploaded:

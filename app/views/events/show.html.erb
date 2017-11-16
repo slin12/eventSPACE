@@ -1,6 +1,6 @@
 
 <h3 class="center pink-text"><%= @event.title %></h3>
-<h6 class="center">A <%= @event.is_private? %> Event Hosted by <%= link_to current_user.name, user_path(current_user)   %></h6>
+<h6 class="center">A <%= @event.is_private? %> Event Hosted by <%= link_to User.find(@event.host_id).name, user_path(@event.host)  %></h6>
 <h6 class="center"><%= @event.real_time %></h6>
 
 <div class="row">
