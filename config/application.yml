@@ -10,6 +10,6 @@
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
-AWS_ACCESS_KEY: ENV["AWS_ACCESS_KEY"]
-AWS_SECRET_KEY: ENV["AWS_SECRET_KEY"]
+AWS_ACCESS_KEY: "AKIAJWJYNLAFB63W2JSQ"
+AWS_SECRET_KEY: "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"
 AWS_BUCKET: "event-space"
