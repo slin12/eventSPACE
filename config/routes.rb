@@ -21,5 +21,7 @@ Rails.application.routes.draw do
 
   post '/rspv', to: "rsvps#update", as: 'rsvps_edit'
 
+  #404 error
+  get '/page_not_found', to: 'static#page_not_found', as: 'page_not_found'
 
 end

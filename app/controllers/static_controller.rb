@@ -8,5 +8,9 @@ class StaticController < ApplicationController
     end
   end
 
+  def page_not_found
+    render :page_not_found
+  end
+
 
 end
