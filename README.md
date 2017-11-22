@@ -5,6 +5,7 @@ Live Demo: https://event-space.herokuapp.com/
 Demo credentials -- 
 
 email: s.lin12@gmail.com
+
 password: password
 
 ----
