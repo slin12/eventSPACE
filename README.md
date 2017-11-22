@@ -1,5 +1,10 @@
 # README
 
+Live Demo: https://event-space.herokuapp.com/ 
+Demo credentials -- 
+email: s.lin12@gmail.com
+password: password
+
 EventSPACE is a social media platform for planning and organizing events. Features include the ability to add friends, create events and invite friends, and RSVP to events.
 
 ## User Signup
